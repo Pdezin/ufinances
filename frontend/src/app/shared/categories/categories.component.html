@@ -1,0 +1,31 @@
+<h1 mat-dialog-title>Categorias</h1>
+<div mat-dialog-content class="form-category">
+  <mat-form-field appearance="legacy">
+    <mat-label>Título</mat-label>
+    <input type="text" matInput [(ngModel)]="data.title" />
+  </mat-form-field>
+  <button
+    (click)="addCategory()"
+    [mat-dialog-close]="data"
+    mat-raised-button
+    color="primary"
+  >
+    Adicionar
+  </button>
+</div>
+<mat-list role="list" class="box-categories">
+  <mat-list-item role="listitem" *ngFor="let category of dataSource">
+    <p>
+      {{ category.title }}
+      <span class="actions-field">
+        <button mat-mini-fab color="warn" (click)="deleteCategory(category.id)">
+          <mat-icon style="font-size: 1.2rem">delete</mat-icon>
+        </button>
+      </span>
+    </p>
+  </mat-list-item>
+</mat-list>
+
+<div mat-dialog-actions class="end-modal-buttons">
+  <button mat-button (click)="onNoClick()">Fechar</button>
+</div>

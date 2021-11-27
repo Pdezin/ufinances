@@ -1,0 +1,20 @@
+.content-modal {
+  display: flex;
+  flex-direction: column;
+}
+
+.end-modal-buttons {
+  display: flex;
+  flex-direction: row-reverse;
+  button {
+    margin-left: 10px;
+  }
+}
+
+.area-radio {
+  padding: 1rem 0;
+
+  .radio-item {
+    margin-right: 1rem;
+  }
+}

@@ -1,0 +1,50 @@
+<h1 *ngIf="!isChange" mat-dialog-title>Adicionar transação</h1>
+<h1 *ngIf="isChange" mat-dialog-title>Editar transação</h1>
+<div mat-dialog-content class="content-modal">
+  <mat-form-field appearance="legacy">
+    <mat-label>Título</mat-label>
+    <input matInput [required]="true" [(ngModel)]="data.title" />
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Categorias</mat-label>
+    <mat-select [required]="true" [(ngModel)]="data.categoryId">
+      <mat-option [value]="option.id" *ngFor="let option of categories">{{
+        option.title
+      }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <div class="area-radio">
+    <mat-radio-group aria-label="Tipo" [(ngModel)]="data.type">
+      <mat-radio-button class="radio-item" value="0">
+        Entrada
+      </mat-radio-button>
+      <mat-radio-button class="radio-item" value="1"> Saída </mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <mat-form-field appearance="legacy">
+    <mat-label>Valor</mat-label>
+    <input type="number" matInput [required]="true" [(ngModel)]="data.value" />
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="end-modal-buttons">
+  <button
+    *ngIf="isChange"
+    mat-raised-button
+    color="primary"
+    [mat-dialog-close]="data"
+  >
+    Editar
+  </button>
+  <button
+    *ngIf="!isChange"
+    mat-raised-button
+    color="primary"
+    [mat-dialog-close]="data"
+  >
+    Adicionar
+  </button>
+  <button mat-button (click)="onNoClick()">Cancelar</button>
+</div>
